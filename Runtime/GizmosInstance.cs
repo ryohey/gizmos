@@ -90,6 +90,21 @@ namespace Popcron
             }
         }
 
+        public static Transform TransformParent
+        {
+            get
+            {
+                GizmosInstance inst = GetOrCreate();
+                return inst.transform.parent;
+            }
+
+            set
+            {
+                GizmosInstance inst = GetOrCreate();
+                inst.transform.SetParent(TransformParent);
+            }
+        }
+
         internal static GizmosInstance GetOrCreate()
         {
             if (hotReloaded || !instance)
@@ -119,6 +134,7 @@ namespace Popcron
                 if (!instance)
                 {
                     instance = new GameObject(typeof(GizmosInstance).FullName).AddComponent<GizmosInstance>();
+                    instance.transform.SetParent(TransformParent);
                     instance.gameObject.hideFlags = HideFlags.HideInHierarchy | HideFlags.HideInInspector;
 
                     markDirty = true;

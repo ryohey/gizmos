@@ -168,6 +168,12 @@ namespace Popcron
             set => GizmosInstance.Material = value;
         }
 
+        public static Transform TransformParent
+        {
+            get => GizmosInstance.TransformParent;
+            set => GizmosInstance.TransformParent = value;
+        }
+
         /// <summary>
         /// Rendering pass to activate.
         /// </summary>
